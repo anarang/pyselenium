@@ -14,8 +14,8 @@
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="css/reveal.min.css">
-		<link rel="stylesheet" href="css/theme/serif.css" id="theme">
+		<link rel="stylesheet" media="all" href="css/reveal.min.css">
+		<link rel="stylesheet" media="all" href="css/theme/serif.css" id="theme">
 
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -24,7 +24,7 @@
 		<script>
 			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
 		</script>
-
+		<link media="print" rel="stylesheet" href="lib/css/print/pdf.css">
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
@@ -66,9 +66,8 @@
 					<h3>... is use of testing tool to:</h3>
 					<!--Test automation is the use of testing tool to:-->
 						<ul>
-						<li>To set test preconditions</li>
 						<li>To control the execution of tests</li>
-						<li>To compare the actual outcomes to predicted outcomes</li>
+						<li>To compare the actual outcomes to expected outcomes</li>
 						<li>To report the test status(PASS/FAIL)</li>
 						</ul>					
 				</section>
@@ -96,8 +95,6 @@
 							<li>Validate the application flow</li>
 							<li>Test suites</li>
 							<li>Report generation</li>
-							<li>Error handling</li>
-							
 						</ul>
 					</p>
 				</section>
@@ -156,12 +153,9 @@ if __name__ == "__main__":
 					<h2>To automate<strong>What?</strong></h2>
 					<img height="600" width="1000" src="./images/common.png">
 				</section>
+                
 
-				<section>
-					<Selenium Webdriver looks like 
-
-				<section>
-					<!--<h2>Want to see some sample code for the talked about common functionalities in any browser application?</h2>-->
+                <section>
 					<h2><strong>Some sample code...</strong></h2>
 				</section> 
 
@@ -220,9 +214,8 @@ def test_pagination:
 				<section>
 					<h2><strong>Maintaining test scripts</strong></h2>
 					<ul>
-						<li>Decide a structure for your test project</li>
-						<li>Depending on the structure, decide modules and classes</li>
-						<li>Decide the format for input test data</li>
+						<li>Structure your test project</li>
+						<li>Decide format for input test data</li>
 						<li>Keep the code DRY</li>
 						<li>Decide which test cases to cover in one test script depending on the flow of the application</li>
 						<li>Use logging module to keep track of the events taking place during the test run</li>
@@ -232,15 +225,12 @@ def test_pagination:
 				<section>
 					<h2><strong>Test reports</strong></h2>
 					<ul>
-						<li>How important is reporting?</li>
-						<li>Do we have a specific format for a test report?</li>
-						<li>What should a test report contain?</li>
-						<li>Can we generate HTML reports?</li>
-						<li>How to generate reports for automated tests?</li>
+						<li>Generate reports using <a href="http://tungwaiyip.info/software/HTMLTestRunner.html">HTMLTestRunner.py</a></li>
+
 					</ul>
 				</section>
 
-				<section data-background="./images/report.png">
+				<section class="report-bg" data-background="./images/report.png">
 					
 				</section>
 
