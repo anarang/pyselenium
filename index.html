@@ -140,7 +140,7 @@ if __name__ == "__main__":
 					<h2>Building an <img class="approach" height="150" src="./images/approach.png"></h2>
 					<ol>
 						<li>Understand the functionality</li>
-						<li>Make a manual test run</li>
+						<li>Write test plan and test cases</li>
 						<li>Decide which test cases to automate</li>
 						<li>Inspect the UI elements accordingly</li>
 						<li>Set the expectations</li>
@@ -188,12 +188,14 @@ def  test_search:
              	<section>
              		<h3>Checkbox selection</h3>
              		<pre><code>
- 
- def test_checkbox:
-	checkbox = driver.find_element_by_id(“id_1”)
-	if checkbox:
+def test_checkbox:
+	try:
+		checkbox = driver.find_element_by_id(“id_1”)
 		self.assertTrue(checkbox.is_selected(),"Incorrect filter selection”)
 		self.assertTrue(checkbox.is_enabled(),"Checkbox is disabled")
+
+	except NoSuchElementException:
+		logging.info("No element present for checkbox")
 
 					</pre></code>
 				</section>
@@ -251,7 +253,7 @@ def test_pagination:
 						<li>Decide which test cases to automate</li>
 						<li>Create good quality test data</li>
 						<li>Design stable logic for test scripts</li>
-						<li>Create automated tests that are resistant to changes in the UI</li>
+						<li>Include code to handle selenium errors which may occur</li>
 						<li>Generate test reports </li>
 						</ul>
 				</section>
