@@ -108,15 +108,15 @@
 				</section>
 
 				<section>
-					<img height=900 width=500 src="./images/ide.png">
+					<img height=680 width=500 src="./images/ide.png">
 				</section>
 
 				<section>
-					<img height=900 width=500 src="./images/ide_with_format.png">
+					<img height=680 width=500 src="./images/ide_with_format.png">
 				</section>
 
 				<section>
-					<img height=900 width=500 src="./images/ide_python.png">
+					<img height=680 width=500 src="./images/ide_python.png">
 				</section>
 
 				<section>
@@ -149,12 +149,11 @@ if __name__ == "__main__":
 						<li>Write test plan and test cases</li>
 						<li>Decide which test cases to automate</li>
 						<li>Inspect the UI elements accordingly</li>
-						<li>Set the expectations</li>
 						<li>Start writing your test script</li>
 					</ol>
 				</section>
 
-				<section data-background="white">
+				<section >
 					<h2>To automate<strong>What?</strong></h2>
 					<!--img height="600" width="1000" src="./images/common.png"-->
 				</section>
@@ -166,7 +165,7 @@ if __name__ == "__main__":
 				<section>
 					<h3>Search</h3>
 					<pre><code>
-#file.json
+#test_data.json
 [
 {"name": "echo","id": 1},{"name": "print","id": 2},{"name": "hello world","id": 3}   
 ]
@@ -175,15 +174,15 @@ if __name__ == "__main__":
 					<pre><code>
 
 def  test_search:  
-  with open(“file.json”) as data_file: 
+  with open(“test_data.json”) as data_file: 
     data_text = json.load(data_file) 
       for each in data_text: 
         search_text = each["name"] 
-        var = driver.find_element_by_id("_id1")
+        var = driver.find_element_by_id("search_box")
         var.clear()
         var.send_keys(search_text) 
-        driver.find_element_by_name("search_id").click() 
-        element = driver.find_elements_by_class_name('results_id') 
+        driver.find_element_by_name("search").click() 
+        element = driver.find_elements_by_class_name('hl') 
         element_text = {z.text.lower() for z in element}
         self.assertIn(search_text.lower(), element_text, "Search result does not match")
              		</code></pre>
