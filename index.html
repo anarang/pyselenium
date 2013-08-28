@@ -48,11 +48,7 @@
 
 				<section>
 					<h2><strong>Why Testing?</strong></h2>
-					<p>
-					</p>
-                     <img width="300" height="320"
-                     src="./images/zoo-testing.jpg"
-                     alt="zoo-testing">
+					
 				</section>
 
 				<section>
@@ -84,6 +80,8 @@
 					<pre style= "font-size: 22px">Programming language :   python</pre>
 					<pre style= "font-size: 22px">Testing framework    :   unittest</pre>
 					</blockquote>
+					<p> </p>
+					<p><a href="http://selenium-python.readthedocs.org/en/latest/index.html#">http://selenium-python.readthedocs.org</a></p>
 				</section>
 
 				
@@ -101,16 +99,24 @@
 
 				<section>
 					<h2><strong>How to start?</strong></h2>
-						<ol>
+						<ul>
 							<li class="fragment">Install Selenium
 							<p><small><code>pip install selenium</code></small></p></li>
 							<li class="fragment">Record and Play with Selenium IDE </li>
 							
-						</ol>
+						</ul>
 				</section>
 
 				<section>
-					<img height=900 width=500 src="./images/selenium-ide.png">
+					<img height=900 width=500 src="./images/ide.png">
+				</section>
+
+				<section>
+					<img height=900 width=500 src="./images/ide_with_format.png">
+				</section>
+
+				<section>
+					<img height=900 width=500 src="./images/ide_python.png">
 				</section>
 
 				<section>
@@ -144,21 +150,13 @@ if __name__ == "__main__":
 						<li>Decide which test cases to automate</li>
 						<li>Inspect the UI elements accordingly</li>
 						<li>Set the expectations</li>
-						<li>Design a suitable logic for the test code</li>
 						<li>Start writing your test script</li>
 					</ol>
 				</section>
 
-				<section>
-					<h2><strong>Read the docs at</strong></h2>
-					<p> </p>
-					<p><a href="http://selenium-python.readthedocs.org/en/latest/index.html#">Selenium with Python</a></p>
-				</section>					
-
-
 				<section data-background="white">
 					<h2>To automate<strong>What?</strong></h2>
-					<img height="600" width="1000" src="./images/common.png">
+					<!--img height="600" width="1000" src="./images/common.png"-->
 				</section>
 
                 <section>
@@ -167,21 +165,27 @@ if __name__ == "__main__":
 
 				<section>
 					<h3>Search</h3>
-					
+					<pre><code>
+#file.json
+[
+{"name": "echo","id": 1},{"name": "print","id": 2},{"name": "hello world","id": 3}   
+]
+					</code></pre>
+
 					<pre><code>
 
 def  test_search:  
-    with open(“file.json”) as data_file: 
-        data_text = json.load(data_file) 
-        for each in data_text: 
-             search_text = each["name"] 
-             driver.find_element_by_id("_id1").clear()
-             driver.find_element_by_id("_id1").send_keys(search_text) 
-             driver.find_element_by_name("search_id").click() 
-             element = driver.find_elements_by_class_name('results_id') 
-             element_text = {z.text.lower() for z in element}
-             self.assertIn(search_text.lower(), element_text, “Search result does not match”)  
-
+  with open(“file.json”) as data_file: 
+    data_text = json.load(data_file) 
+      for each in data_text: 
+        search_text = each["name"] 
+        var = driver.find_element_by_id("_id1")
+        var.clear()
+        var.send_keys(search_text) 
+        driver.find_element_by_name("search_id").click() 
+        element = driver.find_elements_by_class_name('results_id') 
+        element_text = {z.text.lower() for z in element}
+        self.assertIn(search_text.lower(), element_text, "Search result does not match")
              		</code></pre>
              	</section>
 
@@ -189,45 +193,44 @@ def  test_search:
              		<h3>Checkbox selection</h3>
              		<pre><code>
 def test_checkbox:
-	try:
-		checkbox = driver.find_element_by_id(“id_1”)
-		self.assertTrue(checkbox.is_selected(),"Incorrect filter selection”)
-		self.assertTrue(checkbox.is_enabled(),"Checkbox is disabled")
+  try:
+    checkbox = driver.find_element_by_id("id_1")
+    self.assertTrue(checkbox.is_selected(),"Incorrect filter selection")
+    self.assertTrue(checkbox.is_enabled(),"Checkbox is disabled")
 
-	except NoSuchElementException:
-		logging.info("No element present for checkbox")
-
-					</pre></code>
+  except NoSuchElementException:
+    logging.info("No element present for checkbox")
+					</code></pre>
 				</section>
 
 				<section>
 					<h3>Pagination</h3>
 					<pre><code>
 def test_pagination:
-	element=driver.find_element_by_class_name('pagination')
-	regexp= r"[A-Za-z0-9]+"
-	page_numbers = re.findall(regexp,element.text)
-	prev_element = driver.find_element_by_class_name('disabled')
-	prev_element = prev_element.text
-	self.assertEqual(prev_element, page_numbers[0], "The element 'Prev' is NOT disabled on the first page.")
-	page_1 = driver.find_element_by_class_name('active')
-	page_1 = page_1.text
-	self.assertEqual(page_1, page_numbers[1], "The element '1' is NOT active on the first page")
-	next_element = driver.find_element_by_link_text("Next")
-	#similarly verify the last and next element
+  element=driver.find_element_by_class_name('pagination')
+  regexp= r"[A-Za-z0-9]+"
+  page_numbers = re.findall(regexp,element.text)
+  prev_element = driver.find_element_by_class_name('disabled')
+  prev_element = prev_element.text
+  self.assertEqual(prev_element, page_numbers[0], "'Prev' NOT disabled")
+  page_1 = driver.find_element_by_class_name('active')
+  page_1 = page_1.text
+  self.assertEqual(page_1, page_numbers[1], "'1' NOT active")
+  next_element = driver.find_element_by_link_text("Next")
+  #similarly verify the last and next element
 
 					</pre></code>
 				</section>
 
 				<section>
-					<h2><strong>Maintaining test scripts</strong></h2>
-					<ul>
+					<h2><strong>How to maintain your scripts?</strong></h2>
+					<!--ul>
 						<li>Structure your test project</li>
 						<li>Decide format for input test data</li>
 						<li>Keep the code DRY</li>
 						
 						<li>Use logging module to keep track of the events taking place during the test run</li>
-					</ul>
+					</ul-->
 				</section>
 
 				<section>
@@ -244,18 +247,18 @@ def test_pagination:
 				<section>
 					<h1><strong>Demo time</strong></h1>
 					<p> </p>
-					<p>Code available at: <a href= "https://github.com/anarang/fusion">github</a></p>
+					<p>Code available at: <a href= "https://github.com/anarang/fusion">https://github.com/anarang/fusion</a></p>
 				</section>
 
 				<section>
 					<h2><strong>Best practices</strong></h2>
-					<ul>
+					<!--ul>
 						<li>Decide which test cases to automate</li>
 						<li>Create good quality test data</li>
 						<li>Design stable logic for test scripts</li>
 						<li>Include code to handle selenium errors which may occur</li>
 						<li>Generate test reports </li>
-						</ul>
+						</ul-->
 				</section>
 
 				<section data-background="black">
@@ -268,7 +271,8 @@ def test_pagination:
 
 					<p><a href =
                     "http://www.twitter.com/anisha_narang">@anisha_narang</a> | anarang@redhat.com</p>
-					<p>Slides available at: <a href= "http://pyselenium-anisha.rhcloud.com/#/">Let's talk testing with Selenium</a> | <a href="https://github.com/anarang/pyselenium">github</a></p>
+					<p>Slides available at: <a href= "http://pyselenium-anisha.rhcloud.com/#/">http://pyselenium-anisha.rhcloud.com</a></p>
+					<p><a href="https://github.com/anarang/pyselenium">http://goo.gl/UbAOW2</a></p>
 				</section>
 
 				
