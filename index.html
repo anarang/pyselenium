@@ -173,7 +173,7 @@ if __name__ == "__main__":
 
 					<pre><code>
 
-def  test_search:  
+def  test_search():  
   with open(“test_data.json”) as data_file: 
     data_text = json.load(data_file) 
       for each in data_text: 
@@ -184,14 +184,15 @@ def  test_search:
         driver.find_element_by_name("search").click() 
         element = driver.find_elements_by_class_name('hl') 
         element_text = {z.text.lower() for z in element}
-        self.assertIn(search_text.lower(), element_text, "Search result does not match")
+        for e in element_text:
+          self.assertEqual(search_text.lower(), e, "Search result does not match")
              		</code></pre>
              	</section>
 
              	<section>
              		<h3>Checkbox selection</h3>
              		<pre><code>
-def test_checkbox:
+def test_checkbox():
   try:
     checkbox = driver.find_element_by_id("id_1")
     self.assertTrue(checkbox.is_selected(),"Incorrect filter selection")
@@ -205,18 +206,14 @@ def test_checkbox:
 				<section>
 					<h3>Pagination</h3>
 					<pre><code>
-def test_pagination:
+def test_pagination():
   element=driver.find_element_by_class_name('pagination')
   regexp= r"[A-Za-z0-9]+"
   page_numbers = re.findall(regexp,element.text)
   prev_element = driver.find_element_by_class_name('disabled')
   prev_element = prev_element.text
   self.assertEqual(prev_element, page_numbers[0], "'Prev' NOT disabled")
-  page_1 = driver.find_element_by_class_name('active')
-  page_1 = page_1.text
-  self.assertEqual(page_1, page_numbers[1], "'1' NOT active")
-  next_element = driver.find_element_by_link_text("Next")
-  #similarly verify the last and next element
+  #similarly verify the next element
 
 					</pre></code>
 				</section>
